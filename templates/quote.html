@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quote stocks here!
+{% endblock %}
+
+{% block main %}
+    <h1>{{ function }}</h1>
+    <form action="/quote" method="POST">
+        <input type="text" name="symbol" placeholder="symbol">
+        <button type="submit">Submit</button>
+    </form>
+
+{% endblock %}

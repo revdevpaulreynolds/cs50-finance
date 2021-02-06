@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block title %}Holdings{% endblock %}
+
+{% block main %}
+    <h1>Holdings</h1>
+
+    <table class="table table-striped">
+
+        <thead>
+            <tr class="table-primary">
+                <th>Symbol</th>    <th>Shares</th>     <th>Current Value Per Share</th>  <th>Stock holding value</th>
+            </tr>
+        </thead>
+
+        <tbody>
+        {% for row in rows %}
+
+            <tr>
+                <td>{{ row["symbol"] }}</td><td>{{ row["shares"] }}</td><td>{{ row["displaycurrentprice"] }}</td><td>{{ row["totalvalue"] }}</td>
+            </tr>
+
+        {% endfor %}
+
+
+        </tbody>
+
+    </table>
+    <br>
+    <table class="table">
+        <tr><td style="background-color:green; color:white">Cash: {{ displaycash }}</td>
+            <td>Stock Total: {{ displaytotal }}</td>
+            <td>All holdings: {{ displaygrandtotal }}</td></tr>
+    </table>
+
+{% endblock %}

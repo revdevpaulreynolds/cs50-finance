@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Prices listed here
+{% endblock %}
+
+{% block main %}
+
+    One share of {{ name }} ({{ symbol }}) is {{ price | usd }}.
+    <form action="/buy" method="POST">
+        <input name="symbol" type="hidden" value="{{ symbol }}">
+        <input name="name" type="hidden" value="{{ name }}">
+        <input name="price" type="hidden" value="{{ price }}">
+        <button name="buy" type="submit">Buy now</button>
+    </form>
+
+{% endblock %}

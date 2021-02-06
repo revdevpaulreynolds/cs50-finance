@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block title %}Buy stocks here!{% endblock %}
+
+{% block main %}
+
+    <h1>{{ function }}</h1>
+    <form action="/buy" method="POST">
+        <input name="symbol" type="text" placeholder="Symbol">
+        <input type="text" name="shares" placeholder="# of shares">
+        <button name="buy" type="submit">Buy now</button>
+    </form>
+
+
+{% endblock %}
