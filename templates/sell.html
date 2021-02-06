@@ -8,11 +8,31 @@
         <select class="form-control" name="symbol">
             <option disabled selected value>Symbol</option>
             {% for symbol in symbols %}
-                <option value="{{ symbol["symbol"] }}">{{ symbol["symbol"] }}</option>
+                <option id="{{ symbol["symbol"] }}" value="{{ symbol["symbol"] }}">{{ symbol["symbol"] }}</option>
             {% endfor %}
         </select>
-        <input class="form-control" type="text" name="shares" placeholder="Shares">
+        <select class="form-control" id="numbershares" name="shares">
+            <option disabled selected value>Choose number of shares</option>
+        </select>
         <br><button name="sell" type="submit">Sell!</button>
     </form>
 
+    {% for symbol in symbols %}
+    <script>
+        document.getElementById("{{ symbol["symbol"] }}").addEventListener("select", function() {
+            let menu = document.getElementById("numbershares");
+            let shares = {{ symbol["shares"] }};
+            menu.innerHTML = "";
+            for (let i = 1; i <= shares; i++) 
+            {
+                menu.innerHTML += "<option value='" + i + "'>" + i + "</option>";
+            }
+                
+        });
+    </script>    
+   
+        
+    {% endfor %}
 {% endblock %}
+
+

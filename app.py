@@ -239,7 +239,8 @@ def register():
 def sell():
     if request.method == "GET":
         userid = session["user_id"]
-        symbols = db.execute("SELECT symbol FROM holdings WHERE userid = :userid", userid=userid)
+        symbols = db.execute("SELECT symbol, shares FROM holdings WHERE userid = :userid", userid=userid)
+        print(symbols)
         if not symbols:
             return apology("You don't own anything yet!")
 
